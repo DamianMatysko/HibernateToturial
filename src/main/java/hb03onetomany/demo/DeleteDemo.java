@@ -1,13 +1,13 @@
-package hb02onetoonebi.demo;
+package hb03onetomany.demo;
 
-import hb02onetoonebi.demo.entity.Instructor;
-import hb02onetoonebi.demo.entity.InstructorDetail;
+import hb03onetomany.demo.entity.Instructor;
+import hb03onetomany.demo.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 
-public class CreateDemo {
+public class DeleteDemo {
     public static void main(String[] args) {
         SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -18,17 +18,19 @@ public class CreateDemo {
         Session session = sessionFactory.getCurrentSession();
 
         try {
-            Instructor instructor = new Instructor("Chad", "Darby", "emai@email.com");
-            InstructorDetail instructorDetail = new InstructorDetail("http://www.yputobe.com/johonm","blabal");
+            int id = 1;
+            Instructor instructor = session.get(Instructor.class, id);
+            //System.out.println("Found Instructor: " + instructor);
 
-
-            System.out.println("Associate objects...");
-            instructor.setInstructorDetail(instructorDetail);
+            if (instructor!=null){
+                System.out.println("Deleting: + instructor");
+                session.delete(instructor);
+            }
 
             System.out.println("Start tranzaction...");
             session.beginTransaction();
-            System.out.println("Saving instructor: " +instructor);
-            session.save(instructor);
+
+
             System.out.println("Commit transaction...");
             session.getTransaction().commit();
             System.out.println("Success!!!");

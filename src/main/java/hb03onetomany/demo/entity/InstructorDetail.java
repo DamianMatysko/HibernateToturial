@@ -1,4 +1,4 @@
-package hb02onetoonebi.demo.entity;
+package hb03onetomany.demo.entity;
 
 import javax.persistence.*;
 

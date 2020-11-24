@@ -20,7 +20,7 @@ public class CreateDemo {
 
         try {
             Instructor instructor = new Instructor("Chad", "Darby", "emai@email.com");
-            InstructorDetail instructorDetail = new InstructorDetail("http://www.yputobe.com/johonm","blabal")
+            InstructorDetail instructorDetail = new InstructorDetail("http://www.yputobe.com/johonm","blabal");
                     System.out.println("Start transaction...");
             session.beginTransaction();
 

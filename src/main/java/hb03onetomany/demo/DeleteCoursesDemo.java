@@ -1,40 +1,41 @@
-package hb02onetoonebi.demo;
+package hb03onetomany.demo;
 
-import hb02onetoonebi.demo.entity.Instructor;
-import hb02onetoonebi.demo.entity.InstructorDetail;
+import hb03onetomany.demo.entity.Course;
+import hb03onetomany.demo.entity.Instructor;
+import hb03onetomany.demo.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 
-public class CreateDemo {
+public class DeleteCoursesDemo {
     public static void main(String[] args) {
         SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Instructor.class)
                 .addAnnotatedClass(InstructorDetail.class)
+                .addAnnotatedClass(Course.class)
                 .buildSessionFactory();
 
         Session session = sessionFactory.getCurrentSession();
 
         try {
-            Instructor instructor = new Instructor("Chad", "Darby", "emai@email.com");
-            InstructorDetail instructorDetail = new InstructorDetail("http://www.yputobe.com/johonm","blabal");
-
-
-            System.out.println("Associate objects...");
-            instructor.setInstructorDetail(instructorDetail);
-
-            System.out.println("Start tranzaction...");
+            System.out.println("Start transaction...");
             session.beginTransaction();
-            System.out.println("Saving instructor: " +instructor);
-            session.save(instructor);
+
+            int id=10;
+            Course course= session.get(Course.class, id);
+            System.out.println("Deleting course: "+course);
+            session.delete(course);
+
             System.out.println("Commit transaction...");
             session.getTransaction().commit();
+
             System.out.println("Success!!!");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            session.close();
             sessionFactory.close();
         }
     }

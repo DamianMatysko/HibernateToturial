@@ -1,7 +1,7 @@
-package hb02onetoonebi.demo;
+package hb03onetomany.demo;
 
-import hb02onetoonebi.demo.entity.Instructor;
-import hb02onetoonebi.demo.entity.InstructorDetail;
+import hb03onetomany.demo.entity.Instructor;
+import hb03onetomany.demo.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -20,7 +20,8 @@ public class CreateDemo {
         try {
             Instructor instructor = new Instructor("Chad", "Darby", "emai@email.com");
             InstructorDetail instructorDetail = new InstructorDetail("http://www.yputobe.com/johonm","blabal");
-
+                    System.out.println("Start transaction...");
+            session.beginTransaction();
 
             System.out.println("Associate objects...");
             instructor.setInstructorDetail(instructorDetail);
