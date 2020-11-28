@@ -1,8 +1,8 @@
-package hb03onetomany.demo;
+package hb04onetomanyuni.demo;
 
-import hb03onetomany.demo.entity.Course;
-import hb03onetomany.demo.entity.Instructor;
-import hb03onetomany.demo.entity.InstructorDetail;
+import hb04onetomanyuni.demo.entity.Course;
+import hb04onetomanyuni.demo.entity.Instructor;
+import hb04onetomanyuni.demo.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

@@ -1,8 +1,8 @@
-package hb03onetomany.demo;
+package hbEagerVsLazyDemo.demo;
 
-import hb03onetomany.demo.entity.Course;
-import hb03onetomany.demo.entity.Instructor;
-import hb03onetomany.demo.entity.InstructorDetail;
+import hbEagerVsLazyDemo.demo.entity.Course;
+import hbEagerVsLazyDemo.demo.entity.Instructor;
+import hbEagerVsLazyDemo.demo.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
