@@ -1,4 +1,4 @@
-package hb04onetomanyuni.demo.entity;
+package hb05manytomany.demo.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,6 +22,9 @@ public class Course {
     @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name="course_id")
     private List<Review> reviews;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinTable(name = "course_student", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
+    private List<Student> students;
 
     public List<Review> getReviews() {
         return reviews;
@@ -32,15 +35,29 @@ public class Course {
     }
 
     public void addReview(Review theReview) {
-
         if(reviews==null) {
             reviews = new ArrayList<>();
         }
         reviews.add(theReview);
     }
 
+    public void addStudent(Student student) {
+        if(students==null) {
+            students = new ArrayList<>();
+        }
+        students.add(student);
+    }
+
     public Course() {
 
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     public Course(String title) {

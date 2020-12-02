@@ -1,4 +1,4 @@
-package hb04onetomanyuni.demo.entity;
+package hb05manytomany.demo.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
